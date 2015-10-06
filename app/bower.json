@@ -1,0 +1,19 @@
+{
+  "name": "Globe",
+  "version": "0.0.0",
+  "authors": [
+    "boiteaupe@gmail.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "three.js": "threejs#*",
+    "tween.js": "tweenjs#~16.3.1"
+  }
+}
