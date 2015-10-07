@@ -22,22 +22,31 @@
 
             ctx.clearRect(0, 0, 4096, 2048);
 
+            var blue = '#34aadc';
+            var green = '#4cd964';
+            var yellow = '#ffdb4c';
+            var orange = '#ff9500';
+            var red = '#ff3b30';
+
+
             //#5cb85c
             //#428bca
             //#5bc0de
             //#f0ad4e
             //#d9534f
 
-            var value = [//
-                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],//
-                [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],//
-                [1,0,2,5,0,3,0,2,1,0,2,5,0,3,0,2],//
-                [1,0,5,0,1,0,3,0,1,0,5,0,1,0,3,0],//
-                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],//
-                [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],//
-                [1,0,2,5,0,3,0,2,1,0,2,5,0,3,0,2],//
-                [1,0,5,0,1,0,3,0,1,0,5,0,1,0,3,0],//
-            ]
+            var value = [];
+
+            for(var y=0;y<256;y++){
+                value[y] = [];
+                for(var x=0;x<512;x++){
+                    if(!parseInt(Math.random()*5))
+                        value[y].push(parseInt(Math.random()*6));
+                    else
+                        value[y].push(0);
+                }
+            }
+
 
             var radius = 2048/(value.length*2);
             var diametre= radius*2;
@@ -45,23 +54,25 @@
 
             for(var y=0; y<value.length; y++) {
                 for (var x = 0; x < value[y].length; x++) {
+                    if(value[y][x]==0)
+                        continue;
                     ctx.beginPath();
                     ctx.arc(x*diametre+radius, y*diametre+radius, radius, 0, 2 * Math.PI, false);
                     switch (value[y][x]){
                         case 5:
-                            ctx.fillStyle = '#d9534f';
+                            ctx.fillStyle = red;
                             break;
                         case 4:
-                            ctx.fillStyle = '#f0ad4e';
+                            ctx.fillStyle = orange;
                             break;
                         case 3:
-                            ctx.fillStyle = '#5bc0de';
+                            ctx.fillStyle = yellow;
                             break;
                         case 2:
-                            ctx.fillStyle = '#5cb85c';
+                            ctx.fillStyle = green;
                             break;
                         case 1:
-                            ctx.fillStyle = '#428bca';
+                            ctx.fillStyle = blue;
                             break;
                     }
                     ctx.fill();
