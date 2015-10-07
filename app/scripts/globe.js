@@ -104,7 +104,15 @@ DAT.Globe = function(container, opts) {
     shader = Shaders['earth'];
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
-    uniforms['texture'].value = THREE.ImageUtils.loadTexture(imgDir+'world.jpg');
+    //uniforms['texture'].value = THREE.ImageUtils.loadTexture(imgDir+'world.jpg');
+    uniforms['texture'].value = new THREE.Texture(document.getElementById("canvas"));
+
+
+    var tmp = uniforms['texture'];
+    setInterval(function(){
+      tmp.value.needsUpdate = true;
+    },1000);
+
 
     material = new THREE.ShaderMaterial({
 
